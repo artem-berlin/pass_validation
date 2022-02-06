@@ -76,7 +76,7 @@ public class PassValidation {
 
 }
 
-
+//-----------------------------------------------------------
 //
 // public static void main(String[] args) {
 //          ifPassvalid("artem","artem");
