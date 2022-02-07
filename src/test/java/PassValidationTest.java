@@ -23,7 +23,7 @@ class PassValidationTest {
 
     @Test
     void passLenght() {
-        assertEquals("Password is ok", PassValidation.passLenght("artem",5));
+        assertEquals("Password is ok", PassValidation.passLength("artem",5));
     }
 
     @Test

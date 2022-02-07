@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class PassValidation {
@@ -13,7 +14,7 @@ public class PassValidation {
         String pass = in.next();
      //---------------------------------------------------------------------
         System.out.println(ifPassEmpty(pass));
-        System.out.println(passLenght(pass,passLength));
+        System.out.println(passLength(pass,passLength));
         System.out.println("Numbers im password ----> " + ifNumber(pass));
         System.out.println("Password has lowcase ----> " + lowCase(pass));
         System.out.println("Password has uppercase ----> " + upperCase(pass));
@@ -23,12 +24,12 @@ public class PassValidation {
 
     }
     public static String ifPassEmpty(String pass) {
-        if (pass == "") {
+        if (Objects.equals(pass, "")) {
             return "Error, password is empty.";
         } else
             return "Password is not empty";
     }
-    public static String passLenght(String pass, int passLength) {
+    public static String passLength(String pass, int passLength) {
         if (pass.length() < passLength) {
             return "Error, password too short.";
         }else
@@ -78,12 +79,9 @@ public class PassValidation {
         }
     }
     public static boolean allTestResult(String pass, String pass2, int passLength){
-        if (( ifPassEmpty(pass) == "Password is not empty"|| passLenght(pass, passLength) == "Password is ok" ||
-                ifNumber(pass) == false ||lowCase(pass) == true||upperCase(pass) == false||
-                ifPassEqual( pass, pass2) == "Pass is valid"))
-         {
-           // return false;
-        }
+        if (!ifPassEmpty(pass).equals("Password is not empty") && !passLength(pass, passLength).equals("Password is ok") && ifNumber(pass) && !lowCase(pass)) {
+            upperCase(pass);
+        }// return false;
 
         return true;
     }
