@@ -1,11 +1,13 @@
 import java.util.Scanner;
 
 public class PassValidation {
+    static final String pass2 ="artem"; // pass to compare
+    static final int passLength = 5; // pass length to compare
 
     public static void main(String[] args) {
-        String pass2="artem"; // pass to compare
+       // String pass2="artem"; // pass to compare
         //String pass = "artem"; //main pass to test
-        int passLength = 5; // pass length to compare
+       // int passLength = 5; // pass length to compare
         System.out.println("Enter your password:");
         Scanner in = new Scanner(System.in);
         String pass = in.next();
@@ -13,10 +15,12 @@ public class PassValidation {
         System.out.println(ifPassEmpty(pass));
         System.out.println(passLenght(pass,passLength));
         System.out.println("Numbers im password ----> " + ifNumber(pass));
-        System.out.println("<Password has lowcase ----> " + lowCase(pass));
-        System.out.println("Password has lowcase ----> " + upperCase(pass));
+        System.out.println("Password has lowcase ----> " + lowCase(pass));
+        System.out.println("Password has uppercase ----> " + upperCase(pass));
         System.out.println("your pass is " + pass);
         System.out.println(ifPassEqual(pass,pass2));
+        System.out.println("All tests result----------------------->" + allTestResult(pass,pass2,5));
+
     }
     public static String ifPassEmpty(String pass) {
         if (pass == "") {
@@ -65,13 +69,23 @@ public class PassValidation {
         }
         return (isUppercase);
     }
-    static String ifPassEqual(String Pass, String pass2) {
-        if (Pass.equals(pass2)) {
+    static String ifPassEqual(String pass, String pass2) {
+        if (pass.equals(pass2)) {
 
            return "Pass is valid";
         } else {
             return "Pass is not valid";
         }
+    }
+    public static boolean allTestResult(String pass, String pass2, int passLength){
+        if (( ifPassEmpty(pass) == "Password is not empty"|| passLenght(pass, passLength) == "Password is ok" ||
+                ifNumber(pass) == false ||lowCase(pass) == true||upperCase(pass) == false||
+                ifPassEqual( pass, pass2) == "Pass is valid"))
+         {
+           // return false;
+        }
+
+        return true;
     }
 
 }
