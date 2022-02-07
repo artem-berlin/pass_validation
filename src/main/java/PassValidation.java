@@ -79,11 +79,9 @@ public class PassValidation {
         }
     }
     public static boolean allTestResult(String pass, String pass2, int passLength){
-        if (!ifPassEmpty(pass).equals("Password is not empty") && !passLength(pass, passLength).equals("Password is ok") && ifNumber(pass) && !lowCase(pass)) {
-            upperCase(pass);
-        }// return false;
-
-        return true;
+        return ifPassEmpty(pass).equals("Password is not empty") && passLength(pass, passLength).equals("Password is ok") &&
+                !ifNumber(pass) && lowCase(pass) && !upperCase(pass) &&
+                ifPassEqual(pass, pass2).equals("Pass is valid");
     }
 
 }
